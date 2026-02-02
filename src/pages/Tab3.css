@@ -1,0 +1,19 @@
+.task3-table {
+  border-collapse: "collapse";
+  margin-top: "16px";
+}
+
+.cell {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: center;
+  color: #ffffff;
+  background-color: transparent;
+  font-weight: normal;
+}
+
+.cell.highlighted {
+  background-color: #ffcccc;
+  color: #900;
+  font-weight: bold;
+}
