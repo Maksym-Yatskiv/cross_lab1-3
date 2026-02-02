@@ -48,6 +48,7 @@ import '@ionic/react/css/palettes/dark.system.css';
 import './theme/variables.css';
 import Lab1 from './pages/Lab1';
 import Lab2 from './pages/Lab2';
+import Lab3 from './pages/Lab3';
 
 setupIonicReact();
 
@@ -66,14 +67,16 @@ const App: React.FC = () => (
           <IonList>
             <IonItem button routerLink="/lab1/tab1">Лабораторна 1</IonItem>
             <IonItem button routerLink="/lab2">Лабораторна 2</IonItem>
+            <IonItem button routerLink="/lab3">Лабораторна 3</IonItem>
           </IonList>
         </IonContent>
       </IonMenu>
 
-      {/* Основний контент */}
+      {/* Основний */}
       <IonRouterOutlet id="main">
         <Route path="/lab1" component={Lab1} />
         <Route exact path="/lab2" component={Lab2} />
+        <Route exact path="/lab3" component={Lab3} />
         <Route exact path="/">
           <Redirect to="/lab1/tab1" />
         </Route>
