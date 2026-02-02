@@ -1,19 +1,21 @@
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
-  IonIcon,
-  IonLabel,
   IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
-  setupIonicReact
+  setupIonicReact,
+  IonMenu,
+  IonTitle,
+  IonHeader,
+  IonToolbar,
+  IonContent,
+  IonList,
+  IonItem,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
+// import { ellipse, square, triangle } from 'ionicons/icons';
+// import Tab1 from './pages/Tab1';
+// import Tab2 from './pages/Tab2';
+// import Tab3 from './pages/Tab3';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -44,45 +46,40 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import Lab1 from './pages/Lab1';
+import Lab2 from './pages/Lab2';
 
 setupIonicReact();
 
 const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/tab1" />
-          </Route>
-        </IonRouterOutlet>
+<IonApp>
+  <IonReactRouter>
+      
+      {/* Бокове меню */}
+      <IonMenu side="start" menuId="first" contentId="main">
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Меню</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent>
+          <IonList>
+            <IonItem button routerLink="/lab1/tab1">Лабораторна 1</IonItem>
+            <IonItem button routerLink="/lab2">Лабораторна 2</IonItem>
+          </IonList>
+        </IonContent>
+      </IonMenu>
 
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon aria-hidden="true" icon={triangle} />
-            <IonLabel>Завдання 1</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon aria-hidden="true" icon={ellipse} />
-            <IonLabel>Завдання 2</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon aria-hidden="true" icon={square} />
-            <IonLabel>Завдання 3</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
+      {/* Основний контент */}
+      <IonRouterOutlet id="main">
+        <Route path="/lab1" component={Lab1} />
+        <Route exact path="/lab2" component={Lab2} />
+        <Route exact path="/">
+          <Redirect to="/lab1/tab1" />
+        </Route>
+      </IonRouterOutlet>
+
+  </IonReactRouter>
+</IonApp>
 );
-
 export default App;
